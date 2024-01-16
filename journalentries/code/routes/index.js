@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import { getEntries } from '../controllers/journalEntriesViaSupabase.js';
+import { postEntry } from '../controllers/journalEntriesViaSupabase.js';
 
 const router = express.Router();
 
@@ -23,5 +24,6 @@ router.options('/entries', (req, res, next) => {
 });
 
 router.get('/entries', cors(), getEntries);
+router.post('/entries', cors(), postEntry);
 
 export default router;
