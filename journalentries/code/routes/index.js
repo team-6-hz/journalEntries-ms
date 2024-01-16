@@ -1,15 +1,16 @@
 import cors from 'cors';
 import express from 'express';
-import { getEntries } from '../supabaseAdapter.js';
+import { getEntries } from '../controllers/journalEntriesViaSupabase.js';
 
 const router = express.Router();
+
 router.get('/', (req, res, next) => {
   res.json('hi');
 });
 // router.get('/example', checkName, responseExample);
 // router.post('/example', checkName, updateExample);
 
-router.options('/getEntries', (req, res, next) => {
+router.options('/entries', (req, res, next) => {
   try {
     res.header({
       allow: 'GET, POST, OPTIONS',
@@ -21,6 +22,6 @@ router.options('/getEntries', (req, res, next) => {
   }
 });
 
-router.get('/getEntries',cors(), getEntries());
+router.get('/entries', cors(), getEntries);
 
 export default router;

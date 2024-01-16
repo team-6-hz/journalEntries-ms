@@ -14,7 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', indexRouter);
 app.use((req, res, next) => {
   try {
-    res.status(404).send('Sorry can\'t find that!');
+    // set header before response
+    res.status(404).send("Sorry can't find that!");
   } catch (err) {
     next(err);
   }
